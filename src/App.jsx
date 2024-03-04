@@ -13,7 +13,7 @@ function App() {
     const dispatch = useDispatch();
 
     const handleAction = () => {
-        if (text.trim().length < 20) {
+        if (text.trim().length < 20 && text.trim().length !== 0) {
             dispatch(addNewTodo(text));
             setText("");
         }

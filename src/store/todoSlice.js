@@ -4,7 +4,7 @@ export const fetchTodos = createAsyncThunk(
     "todos/fetchTodos",
     async function (_, { rejectWithValue }) {
         try {
-            const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
+            const response = await fetch("https://65e62a4ed7f0758a76e8394e.mockapi.io/todos");
             if (!response.ok) {
                 throw new Error("Server error");
             }
@@ -21,7 +21,7 @@ export const deleteTodo = createAsyncThunk(
     "todos/deleteTodo",
     async function (id, { rejectWithValue, dispatch }) {
         try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+            const response = await fetch(`https://65e62a4ed7f0758a76e8394e.mockapi.io/todos/${id}`, {
                 method: "DELETE",
             });
 
@@ -41,8 +41,8 @@ export const toggleStatus = createAsyncThunk(
         const todo = getState().todos.todos.find((todo) => todo.id === id);
 
         try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-                method: "PATCH",
+            const response = await fetch(`https://65e62a4ed7f0758a76e8394e.mockapi.io/todos/${id}`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -72,7 +72,7 @@ export const addNewTodo = createAsyncThunk(
                 completed: false,
             };
 
-            const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
+            const response = await fetch("https://65e62a4ed7f0758a76e8394e.mockapi.io/todos", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
